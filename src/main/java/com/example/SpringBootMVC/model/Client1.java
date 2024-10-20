@@ -1,7 +1,7 @@
 package com.example.SpringBootMVC.model;
 
 
-public class Client {
+public class Client1 {
     private Integer id;
     private String name;
     private String email;

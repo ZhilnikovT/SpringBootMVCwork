@@ -1,6 +1,5 @@
-package com.example.SpringBootMVC;
+package SB;
 
-import com.example.SpringBootMVC.model.Client1;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 //@RestController
@@ -23,21 +23,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ClientController {
     
     private final ClientService clientService;
-
+    
+        
     @Autowired
     public ClientController(ClientService clientService) {
         this.clientService = clientService;
     }
 
     @PostMapping(value = "/clients")
-    public ResponseEntity<?> create(@RequestBody Client1 client) {
+    public ResponseEntity<?> create(@RequestBody Client client) {
         clientService.create(client);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/clients")
-    public ResponseEntity<List<Client1>> read() {
-        final List<Client1> clients = clientService.readAll();
+    public ResponseEntity<List<Client>> read() {
+        final List<Client> clients = clientService.readAll();
 
         return clients != null &&  !clients.isEmpty()
                 ? new ResponseEntity<>(clients, HttpStatus.OK)
@@ -45,8 +46,8 @@ public class ClientController {
     }
 
     @GetMapping(value = "/clients/{id}")
-    public ResponseEntity<Client1> read(@PathVariable(name = "id") int id) {
-        final Client1 client = clientService.read(id);
+    public ResponseEntity<Client> read(@PathVariable(name = "id") int id) {
+        final Client client = clientService.read(id);
 
         return client != null
                 ? new ResponseEntity<>(client, HttpStatus.OK)
@@ -54,7 +55,7 @@ public class ClientController {
     }
 
     @PutMapping(value = "/clients/{id}")
-    public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody Client1 client) {
+    public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody Client client) {
         final boolean updated = clientService.update(client, id);
 
         return updated
@@ -70,5 +71,8 @@ public class ClientController {
                 ? new ResponseEntity<>(HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
-
+    
+    // Очумелые ручки
+    
+    
 }

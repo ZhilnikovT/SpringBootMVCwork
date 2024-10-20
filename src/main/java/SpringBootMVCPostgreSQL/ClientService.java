@@ -1,6 +1,5 @@
-package com.example.SpringBootMVC;
+package SpringBootMVCPostgreSQL;
 
-import com.example.SpringBootMVC.model.Client1;
 import java.util.List;
 
 interface ClientService {
@@ -8,20 +7,20 @@ interface ClientService {
     * Создает нового клиента
     * @param client - клиент для создания
     */
-   void create(Client1 client);
+   void create(Client2 client);
 
    /**
     * Возвращает список всех имеющихся клиентов
     * @return список клиентов
     */
-   List<Client1> readAll();
+   List<Client2> readAll();
 
    /**
     * Возвращает клиента по его ID
     * @param id - ID клиента
     * @return - объект клиента с заданным ID
     */
-   Client1 read(int id);
+   Client2 read(int id);
 
    /**
     * Обновляет клиента с заданным ID,
@@ -30,7 +29,7 @@ interface ClientService {
     * @param id - id клиента которого нужно обновить
     * @return - true если данные были обновлены, иначе false
     */
-   boolean update(Client1 client, int id);
+   boolean update(Client2 client, int id);
 
    /**
     * Удаляет клиента с заданным ID
