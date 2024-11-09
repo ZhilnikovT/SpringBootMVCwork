@@ -11,8 +11,15 @@ import org.springframework.stereotype.Component;
 //@SpringBootApplication
 @Configuration
 @EnableAutoConfiguration
-//@ComponentScan(basePackages = {"com.example.SB", "com.example.SpringBootMVC"})
+
+//@ComponentScan(basePackages = {"com.example.SB", "SpringBootMVCPostgreSQL"})
+/*
+@ComponentScan(basePackages = {"com.example.SB", "com.example.SpringBootMVC", "com.example.SpringBootMVC.model"})
+"com.example.SpringBootMVC", "com.example.SpringBootMVC.model"
+Подключаю MVC из третьего проекта
+*/
 @ComponentScan(basePackages = {"com.example.SB"})
+
 public class SBApplication {
 
 	public static void main(String[] args) {

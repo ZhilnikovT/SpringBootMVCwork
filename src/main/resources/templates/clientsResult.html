@@ -1,0 +1,17 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Result</h1>
+    <tr th:each="client : ${clients}">
+        <p th:text="'номер: ' + ${client.id}" />
+        <p th:text="'имя: ' + ${client.name}" />
+        <p th:text="'email : ' + ${client.email}" />
+        <p th:text="'тел.: ' + ${client.phone}" />
+        <p th:text="'сделать: ' + ${client.todo}" />
+        <a href="/clients">Submit another message</a>
+    </tr>
+</body>
+</html>

@@ -1,11 +1,11 @@
-package SpringBootMVCPostgreSQL;
+package com.example.SpringBootMVC.SpringBootMVCPostgreSQL;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClientServiceImpl2 implements ClientService {
+public class ClientServiceImpl implements ClientService {
 
     //@Autowired
     //private ClientRepository clientRepository;
@@ -13,27 +13,28 @@ public class ClientServiceImpl2 implements ClientService {
     private final ClientRepository clientRepository;
     //?
     @Autowired
-    public ClientServiceImpl2(ClientRepository clientRepository) {
+    public ClientServiceImpl(ClientRepository clientRepository) {
        this.clientRepository = clientRepository;
     }
 
     @Override
-    public void create(Client2 client) {
+    public void create(Client client) {
+        System.out.print("public void create(Client client)");
         clientRepository.save(client);
     }
 
     @Override
-    public List<Client2>  readAll() {
+    public Iterable<Client>  readAll() {
         return clientRepository.findAll();
     }
 
     @Override
-    public Client2 read(int id) {
+    public Client read(int id) {
         return clientRepository.getOne(id);
     }
 
     @Override
-    public boolean update(Client2 client, int id) {
+    public boolean update(Client client, int id) {
         if (clientRepository.existsById(id)) {
             client.setId(id);
             clientRepository.save(client);

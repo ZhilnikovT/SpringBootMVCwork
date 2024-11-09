@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+// -- my
+//import com.example.SpringBootMVC.model.Client1;
+// --
+
 //@RestController
 
 @ResponseBody
@@ -23,15 +27,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ClientController {
     
     private final ClientService clientService;
-    
+    // -- my
+    //private Client1 client1;
+    // --
         
     @Autowired
     public ClientController(ClientService clientService) {
+    //public ClientController(ClientService clientService, Client1 client1) {
         this.clientService = clientService;
+    //    this.client1 = client1; // -- my
     }
 
     @PostMapping(value = "/clients")
     public ResponseEntity<?> create(@RequestBody Client client) {
+        //my(client, client1);
         clientService.create(client);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -72,7 +81,13 @@ public class ClientController {
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
     
-    // Очумелые ручки
-    
+    // -- my Очумелые ручки
+//    private void my(Client client, Client1 client1) {
+//        client.setName(client1.getName());
+//        client.setEmail(client1.getEmail());
+//        client.setPhone(client1.getPhone());
+//        client.setTodo(client1.getTodo());
+//    }
+    // --
     
 }

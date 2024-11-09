@@ -1,13 +1,11 @@
-package SpringBootMVCPostgreSQL;
+package com.example.SpringBootMVC.SpringBootMVCPostgreSQL;
 
 //import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "clients")
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Client2 {
+public class Client {
     @Id
     @Column(name = "id")
     @SequenceGenerator(name = "clientsIdSeq", sequenceName = "clients_id_seq", allocationSize = 1)
@@ -22,6 +20,17 @@ public class Client2 {
     @Column(name = "todo")
     private String todo;
 
+    public Client() {
+    }
+    
+    public Client(Integer id, String name, String email, String phone, String todo) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.todo = todo;
+    }
+    
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
@@ -36,5 +45,8 @@ public class Client2 {
 
     public String getTodo() { return todo; }
     public void setTodo(String todo) { this.todo = todo; }
-    
+
+//    public String toString() {
+//        return id.toString() + " " +  name + " " +  email + " " +  phone + " " +  todo;
+//    }
 }
